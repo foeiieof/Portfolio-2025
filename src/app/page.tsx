@@ -81,7 +81,7 @@ const Home = () => {
         </section>
         <section className="w-full max-w-[90vw] flex flex-col bg-red h-[250px] justify-center items-start gap-4 relative overflow-hidden">
           <Parallax baseVelocity={-5}>Hello Everyone!</Parallax>
-          <Parallax baseVelocity={5}>you can call me "Foei"</Parallax>
+          <Parallax baseVelocity={5}>you can call me &quot;Foei&quot;</Parallax>
         </section>
       </main>
   </div>
