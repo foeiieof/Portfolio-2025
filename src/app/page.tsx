@@ -1,20 +1,17 @@
 "use client"
 import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
 import { CgChevronRight } from "react-icons/cg"
-import { ReactHTMLElement, useRef } from "react"
+import { useRef } from "react"
 import { motion, useMotionValueEvent, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame } from "motion/react"
 import { wrap } from "motion"
 import Image from "next/image"
 import clsx from "clsx"
-import { a } from "motion/react-client"
-// import { laravel } from "public/logo/laravel.svg" 
 
 type IconCardProps = {
   src: string;
   w: number;
   h: number;
 }
-// <Image src={"logo/nestjs.svg"}   className="bg-white p-2 rounded-xl hover:scale-[1.1]" width={50} height={50} alt=""/>
 const IconCard = ({src,w,h}:IconCardProps) => {
   return( <Image src={src} width={w} height={h} className="bg-white p-2 rounded-xl hover:scale-[1.1]" alt="" />) 
 }
@@ -43,7 +40,7 @@ const Parallax = ({children, baseVelocity} :ParallaxProps) => {
     const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
     const directionFactor = useRef<number>(1);
-    useAnimationFrame((t, delta) => {
+    useAnimationFrame((_, delta) => {
         let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
    if (velocityFactor.get() < 0) {
          directionFactor.current = -1;
