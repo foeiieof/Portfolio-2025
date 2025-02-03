@@ -75,7 +75,7 @@ const Home = () => {
             <div className="w-[280px] h-[320px] bg-[#f4f4f4] rounded-xl"></div> 
             <div className="w-[280px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4">
               <span className="text-[#353535] text-[22px] font-bold">About me</span>
-             <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
+             <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
             </div> 
           </div>
           
@@ -83,7 +83,7 @@ const Home = () => {
             <div className="w-[280px] h-[435px] bg-[#f4f4f4] rounded-xl flex flex-col justify-end items-center py-4">
               <span className="text-[#353535] text-[22px] font-bold">Projects</span>
               <span className="text-[#7e7e7e] text-[14px] font-bold">IOS, WebSite, more...</span>
-              <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
+              <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
             </div>
           </div>
 
@@ -91,7 +91,7 @@ const Home = () => {
             <div className="w-[280px] h-[350px] bg-[#f4f4f4] rounded-xl flex flex-col justify-end items-center py-4 px-6 text-center">
               <span className="text-[#353535] text-[22px] font-bold">Service I Offer</span>
               <p className="text-[#7e7e7e] text-[16px] font-bold">I could help you with a few things ...</p>
-              <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
+              <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
             </div>
               <div className="w-[280px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-center items-center p-4 gap-2">
                 <IconInCard className={"hover:bg-[#353535]"}><BsGithub size={30} color={"#fff"}/></IconInCard>
