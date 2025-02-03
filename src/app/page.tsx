@@ -1,9 +1,32 @@
 "use client"
 import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
 import { CgChevronRight } from "react-icons/cg"
-import { useRef } from "react"
+import { ReactHTMLElement, useRef } from "react"
 import { motion, useMotionValueEvent, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame } from "motion/react"
 import { wrap } from "motion"
+import Image from "next/image"
+import clsx from "clsx"
+import { a } from "motion/react-client"
+// import { laravel } from "public/logo/laravel.svg" 
+
+type IconCardProps = {
+  src: string;
+  w: number;
+  h: number;
+}
+// <Image src={"logo/nestjs.svg"}   className="bg-white p-2 rounded-xl hover:scale-[1.1]" width={50} height={50} alt=""/>
+const IconCard = ({src,w,h}:IconCardProps) => {
+  return( <Image src={src} width={w} height={h} className="bg-white p-2 rounded-xl hover:scale-[1.1]" alt="" />) 
+}
+
+type IconInCardProps = {
+  children: React.ReactNode;
+  className?: string | undefined; 
+}
+
+const IconInCard = ({children, className}:IconInCardProps) => {
+  return (<div className={clsx(`w-[42px] h-[42px] rounded-lg bg-[#dadada] flex justify-center items-center hover:scale-[1.05] transition delay-icon duration-icon ease-in-out`,className)}> {children} </div>)
+}
 
 interface ParallaxProps {
     children: string;
@@ -44,9 +67,9 @@ const Home = () => {
     useMotionValueEvent(scrollYProgress, "change", (val)=>{console.log("Y: ", val )})
 
   return (
-  <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-center min-h-screen p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full px-8">
-      <section className="w-full flex flex-row bg-red h-[450px] justify-center items-start gap-4 ">
+  <div className="grid grid-rows-[20px_1fr_20px] sm:items-start justify-items-center min-h-screen p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full sm:px-8 px-2 overflow-y-hidden">
+      <section className="w-full sm:h-[450px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4 ">
           {/* <div></div> */}
           <div className="flex flex-col justify-start items-center gap-4">
             <div className="w-[280px] h-[320px] bg-[#f4f4f4] rounded-xl"></div> 
@@ -71,17 +94,40 @@ const Home = () => {
               <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2"><CgChevronRight size={24} color={"#7e7e7e"} /></div> 
             </div>
               <div className="w-[280px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-center items-center p-4 gap-2">
-                <div className={"w-[42px] h-[42px] rounded-lg bg-[#dadada] flex justify-center items-center"}><BsGithub size={30} color={"#fff"} /></div>
-                <div className={"w-[42px] h-[42px] rounded-lg bg-[#dadada] flex justify-center items-center"}><BsLinkedin size={30} color={"#fff"} /></div>
-                <div className={"w-[42px] h-[42px] rounded-lg bg-[#dadada] flex justify-center items-center"}><BsLine size={30} color={"#fff"} /></div>
-                <div className={"w-[42px] h-[42px] rounded-lg bg-[#dadada] flex justify-center items-center"}><BsFillSendPlusFill size={30} color={"#fff"} /></div> 
-              
+                <IconInCard className={"hover:bg-[#353535]"}><BsGithub size={30} color={"#fff"}/></IconInCard>
+                <IconInCard className={"hover:bg-[#50A0E6]"}><BsLinkedin size={30} color={"#fff"}/></IconInCard>
+                <IconInCard className={"hover:bg-[#68E651]"}><BsLine size={30} color={"#fff"}/></IconInCard>
+                <IconInCard className={"hover:bg-[#E65060]"}><BsFillSendPlusFill size={30} color={"#fff"}/></IconInCard>
             </div>
           </div>
         </section>
-        <section className="w-full max-w-[90vw] flex flex-col bg-red h-[250px] justify-center items-start gap-4 relative overflow-hidden">
+        <section className="w-full h-[100%] max-w-[90vw] flex flex-col bg-red sm:h-[250px] justify-center items-start gap-4 relative overflow-hidden">
           <Parallax baseVelocity={-5}>Hello Everyone!</Parallax>
           <Parallax baseVelocity={5}>you can call me &quot;Foei&quot;</Parallax>
+        </section>
+        <section className="w-full sm:h-[450px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4">
+         <div className="flex flex-col justify-start items-center gap-4">
+          <div className="w-[280px] h-[320px] bg-[#f4f4f4] rounded-xl"></div> 
+          </div>
+        </section>
+        <section className="w-full sm:h-[450px] h-full  flex flex-col bg-red  justify-center items-center gap-4">
+          <span className="text-[#353535] font-bold text-[16px] uppercase">POWERING THE BEST TOOLS</span>
+          <div className="sm:w-full sm:flex sm:flex-row sm:flex-wrap grid grid-cols-4 place-content-around gap-4 bg-[#f4f4f4] p-4 rounded-xl sm:gap-6 ">
+            <IconCard src="logo/nodejs.svg" w={50} h={50} />
+            <IconCard src="logo/express.svg" w={50} h={50} />
+            <IconCard src="logo/nestjs.svg" w={50} h={50} />
+            <IconCard src="logo/next.svg" w={50} h={50} />
+            <IconCard src="logo/laravel.svg" w={50} h={50} />
+            <IconCard src="logo/redis.svg" w={50} h={50} />
+            <IconCard src="logo/kafka.svg" w={50} h={50} />
+            <IconCard src="logo/mongo.svg" w={50} h={50} />
+            <IconCard src="logo/postgresql.svg" w={50} h={50} />
+            <IconCard src="logo/prisma.svg" w={50} h={50} />
+            <IconCard src="logo/jestjs.svg" w={50} h={50} />
+            <IconCard src="logo/docker.svg" w={50} h={50} />
+            <IconCard src="logo/aws.svg" w={50} h={50} />
+            <IconCard src="logo/figma.svg" w={50} h={50} />
+          </div>
         </section>
       </main>
   </div>

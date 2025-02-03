@@ -14,6 +14,12 @@ const config: Config = {
       },
       boxShadow: {
         card: "0px 8px 55px 2px rgba(0,0,0,0.10)"
+      },
+      transitionDelay: {
+        icon: "50ms"
+      },
+      transitionDuration: {
+        icon: "200ms"
       }
     },
   },
