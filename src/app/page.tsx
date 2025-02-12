@@ -187,11 +187,6 @@ const Home = () => {
           <TextParallax baseVelocity={5}><span className="hover:drop-shadow-2xl hover:text-white">you can call me &quot;Foei&quot;</span></TextParallax>
 
         </section>
-        <section className="w-full sm:h-[450px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4">
-          <div className="flex flex-col justify-start items-center gap-4">
-            <div className="w-[280px] h-[320px] bg-[#f4f4f4] rounded-xl"></div>
-          </div>
-        </section>
         <section className="w-full sm:h-[450px] h-full  flex flex-col bg-red  justify-center items-center gap-4">
           <span className="text-[#353535] font-bold text-[16px] uppercase">POWERING THE BEST TOOLS</span>
         </section>
