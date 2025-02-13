@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "FoeiieoF Portfolio", };
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased no-scrollbar`} >
         <Navbar />
         {children}
       </body>
