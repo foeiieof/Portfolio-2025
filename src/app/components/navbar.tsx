@@ -3,7 +3,7 @@ import { IoChatbubbleEllipses } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-white h-[55px] flex flex-row justify-between items-center px-[15px] fixed">
+    <nav className="z-50 w-full bg-transparent h-[55px] flex flex-row justify-between items-center px-[15px] fixed">
       <div className="w-[40px] h-[40px] flex flex-col justify-center items-center bg-[#f4f4f4] rounded-full">
         <CgProfile color="#232323" size={23} />
       </div>

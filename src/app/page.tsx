@@ -1,12 +1,11 @@
 "use client"
-import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
-import { CgChevronRight } from "react-icons/cg"
-import { useEffect, useRef, useState } from "react"
-import { motion, useMotionValueEvent, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame, MotionProps } from "motion/react"
+import clsx from "clsx"
 import { wrap } from "motion"
 import Image from "next/image"
-import clsx from "clsx"
-import gsap from "gsap"
+import { CgChevronRight } from "react-icons/cg"
+import { useEffect, useRef, useState } from "react"
+import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
+import { motion, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame, MotionProps, } from "motion/react"
 
 type IconCardProps = {
   w: number;
@@ -14,41 +13,96 @@ type IconCardProps = {
   src?: string;
   t?: string;
 }
-
 type IconInCardProps = {
   children: React.ReactNode;
   className?: string | undefined;
 }
-
 interface ParallaxProps {
   children: string | React.ReactNode;
   baseVelocity: number;
+}
+const TextSlice: { vlc: number, text: string }[] = [
+  { vlc: 2, text: "Hello Everyone!" },
+  { vlc: -2, text: "you can call me 'Foei' " },
+]
+
+const ContactList: { element: React.ReactNode, style: string }[] = [
+  { element: <BsGithub size={30} color={"#fff"} />, style: "hover:bg-[#353535] w-[50px]" },
+  { element: <BsLinkedin size={30} color={"#fff"} />, style: "hover:bg-[#50A0E6] w-[50px]" },
+  { element: <BsLine size={30} color={"#fff"} />, style: "hover:bg-[#68E651] w-[50px]" },
+  { element: <BsFillSendPlusFill size={30} color={"#fff"} />, style: "hover:bg-[#E65060] w-[50px]" },
+]
+
+const ImageTools: { src: string, w: number, h: number, desc: string }[] = [
+  { src: "logo/nodejs.svg", w: 80, h: 80, desc: "Node.js" },
+  { src: "logo/express.svg", w: 80, h: 80, desc: "Express.js" },
+  { src: "logo/nestjs.svg", w: 80, h: 80, desc: "Nest.js" },
+  { src: "logo/next.svg", w: 80, h: 80, desc: "Next.js" },
+  { src: "logo/laravel.svg", w: 80, h: 80, desc: "Laravel" },
+  { src: "logo/redis.svg", w: 80, h: 80, desc: "Redis" },
+  { src: "logo/kafka.svg", w: 80, h: 80, desc: "Kafka" },
+  { src: "logo/mongo.svg", w: 80, h: 80, desc: "Mongo" },
+  { src: "logo/postgresql.svg", w: 80, h: 80, desc: "PostgreSQL" },
+  { src: "logo/prisma.svg", w: 80, h: 80, desc: "Prisma.js" },
+  { src: "logo/jestjs.svg", w: 80, h: 80, desc: "Jest" },
+  { src: "logo/docker.svg", w: 80, h: 80, desc: "Docker" },
+  { src: "logo/aws.svg", w: 80, h: 80, desc: "AWS" },
+  { src: "logo/figma.svg", w: 80, h: 80, desc: "Figma" },
+]
+
+const elementStyle = {
+  "style1": {
+    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
+    transition: { duration: 1.2, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], },
+  },
+  "style2": {
+    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.8, delay: 0.5, ease: [0, 0.71, 0.2, 1.01], }
+  },
+  "style3": {
+    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.3, delay: 0.4, ease: [0, 0.71, 0.2, 1.01], }
+  },
+  "style4": {
+    initial: { opacity: 0, scale: 0.7 }, animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.5, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], }
+  },
+  "style5": {
+    initial: { opacity: 0, scale: 0.3 }, animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.4, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], }
+  }
+}
+
+const MotionDiv = ({ children, className, ...props }: { children?: React.ReactNode; className: string } & MotionProps) => {
+  return <motion.div className={className} {...props}>{children}</motion.div>
 }
 
 const IconInCard = ({ children, className }: IconInCardProps) => {
   return <motion.div
     initial={{ rotate: 0 }}
-    whileHover={{
-      rotate: [0, 10, -10, 0],
-    }}
+    whileHover={{ rotate: [0, 10, -10, 0], }}
     transition={{ duration: 0.5, ease: "easeInOut", repeat: Infinity }}
     className={clsx(`w-[100px] h-[50px] rounded-lg flex justify-center items-center transition delay-icon duration-icon ease-in-out`, className)}> {children} </motion.div>
 }
 
-
 const IconCard = ({ src, w, h, t }: IconCardProps) => {
   return (
-    <div
-      className="w-[140px] h-[180px] font-semibold hover:font-bold flex flex-col justify-evenly items-center 
+    <div className="w-[140px] h-[180px] font-semibold hover:font-bold flex flex-col justify-evenly items-center 
       gap-2 bg-[#f4f4f4] rounded-xl py-2 grayscale hover:grayscale-0 text-[#b0b0b0] hover:text-black ">
-      {src ?
-        <motion.div whileHover={{ scale: 0.8, }} >
-          <Image src={src} width={w} height={h} className="rounded-2xl bg-white p-4" alt="" />
-        </motion.div> : ""}
-      {t ? <span className=" text-[16px]">{t}</span> : ""}
+      {src ? <motion.div whileHover={{ scale: 0.8, }} >
+        <Image src={src} width={w} height={h} className="rounded-2xl bg-white p-4" alt="" />
+      </motion.div> : ""} {t ? <span className=" text-[16px]">{t}</span> : ""}
     </div>
   )
 }
+
+// const PhotoCard = ({ src, w, h, t }: IconCardProps) => {
+//   return (
+//     <div className="w-fit bg-transparent p-1 rounded-xl border border-[#353535]/5">
+//       {src ? < Image src={src} width={w} height={h} className={`object-contain bg-red-300 rounded-xl ${t}`} alt="" /> : ""}
+//     </div >
+//   )
+// }
 
 const TextParallax = ({ children, baseVelocity }: ParallaxProps) => {
   const baseX = useMotionValue(0);
@@ -88,52 +142,66 @@ const CardParallax = ({ children, baseVelocity = 5 }: { children: React.ReactNod
   });
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
   return (
-    <div className="overflow-hidden leading-[0.8] m-0 whitespace-nowrap flex flex-row w-[90vw]">
+    <div className="overflow-hidden leading-[0.8] m-0 whitespace-nowrap flex flex-row w-full">
+      <motion.div className="font-semibold uppercase text-[64px] flex whitespace-nowrap flex-row"
+        style={{ x }} > {Array(duplicateCount).fill(children).map((child, index) => (
+          <span key={index} className="px-4">{child}</span>))}
+      </motion.div> </div>);
+};
+
+// const ProjectParallax = ({ children, baseVelocity = 5, stateVal }: { children: React.ReactNode; baseVelocity?: number; stateVal: Dispatch<SetStateAction<number>> }) => {
+//   const baseX = useMotionValue(0);
+//   const directionFactor = useRef<number>(1);
+//   const duplicateCount = 5;
+//   useAnimationFrame((_, delta) => {
+//     let moveBy = directionFactor.current * baseVelocity * (delta / 5000);
+//     baseX.set(baseX.get() + moveBy);
+//   });
+//   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
+//   return (
+//     <div
+//       onMouseOver={() => stateVal(5)}
+//       onMouseLeave={() => stateVal(20)}
+//       className="overflow-hidden leading-[0.8] m-0 whitespace-nowrap flex flex-row w-[90vw] h-full"
+//     >
+//       <motion.div className="font-semibold uppercase text-[64px] flex whitespace-nowrap flex-row w-full h-full"
+//         style={{ x }} >
+//         {Array(duplicateCount).fill(children).map((child, index) => (
+//           <div className="w-full h-full" key={index}>
+//             {child}
+//           </div>
+//         ))}
+//       </motion.div> </div>);
+// };
+const images: { src: string, type: "phone" | "desktop" }[] = [
+  { src: "/proj/proj_landn_exc.png", type: "desktop" },
+  { src: "/proj/proj_note_exc.png", type: "phone" },
+  { src: "/proj/proj_crm_exc.png", type: "desktop" },
+  { src: "/proj/proj_ai_exc.png", type: "phone" },
+  { src: "/proj/proj_crm2_exc.png", type: "desktop" },
+  { src: "/proj/proj_loyal_exc.png", type: "phone" },
+];
+
+const ContinuousSlider = () => {
+  return (
+    <div className="overflow-hidden w-full h-[600px] relative">
       <motion.div
-        className="font-semibold uppercase text-[64px] flex whitespace-nowrap flex-row"
-        style={{ x }}
+        className="flex w-[200%]" // ทำให้กว้างกว่าจอเพื่อเลื่อนได้ต่อเนื่อง
+        animate={{ x: ["0%", "-100%"] }} // เลื่อนจาก 0 → -100%
+        transition={{ repeat: Infinity, duration: 30, ease: "linear" }} // วนซ้ำตลอด
       >
-        {Array(duplicateCount).fill(children).map((child, index) => (
-          <span key={index} className="px-4">{child}</span>
+        {[...images, ...images].map((img, index) => ( // ซ้ำ 2 รอบเพื่อไม่มีช่องว่าง
+          <img
+            key={index}
+            src={img.src}
+            className={`${img.type === "phone" ? "w-[400px]" : "w-[800px]"} h-[600px] object-cover mx-2 rounded-xl border border-[#353535]/10 p-1`}
+          />
         ))}
       </motion.div>
     </div>
   );
-};
-
-
-const elementStyle = {
-  "style1": {
-    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
-    transition: { duration: 1.2, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], },
-  },
-  "style2": {
-    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.8, delay: 0.5, ease: [0, 0.71, 0.2, 1.01], }
-  },
-  "style3": {
-    initial: { opacity: 0, scale: 0.5 }, animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.3, delay: 0.4, ease: [0, 0.71, 0.2, 1.01], }
-  },
-  "style4": {
-    initial: { opacity: 0, scale: 0.7 }, animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], }
-  },
-  "style5": {
-    initial: { opacity: 0, scale: 0.3 }, animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.4, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], }
-  }
 }
-
-const MotionDiv = ({ children, className, ...props }: { children?: React.ReactNode; className: string } & MotionProps) => {
-  return <motion.div className={className} {...props}>{children}</motion.div>
-}
-
-// Demo Glowing button
-
 const Home = () => {
-  const [mouseOn, setMouseOn] = useState(false)
-  const { scrollYProgress } = useScroll()
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -143,39 +211,28 @@ const Home = () => {
       const clampedValue = Math.max(0, Math.min(scrollY / maxScroll, 1)); // จำกัดค่า 0 - 1
       setScrollProgress(clampedValue);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // useMotionValueEvent(scrollYProgress, "change", (val) => {
-  //   console.log("Y: ", val);
-  //   if (val < 0) val = 0
-  // })
+
   return (
     <div className="relative">
       <div className="fixed bottom-0 left-0 h-2 bg-[#353535] z-50" style={{ width: `${scrollProgress * 100}%` }} />
       <div className="grid grid-rows-[20px_1fr_20px] sm:items-start justify-items-center min-h-screen p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full sm:px-8 px-2 overflow-y-hidden">
           <section className="w-full sm:h-[600px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4 ">
-
             <div className="flex flex-col justify-start items-center gap-4 h-full">
               <MotionDiv
                 className="w-[380px] h-[490px] bg-[#f4f4f4] rounded-xl"
                 {...elementStyle["style2"]}
               ></MotionDiv>
-              <MotionDiv
-                className="w-[380px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4"
-                {...elementStyle["style1"]}>
+              <MotionDiv className="w-[380px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4" {...elementStyle["style1"]}>
                 <span className="text-[#353535] text-[22px] font-bold">About me</span>
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
             </div>
-
             <div className="flex flex-col justify-start items-center gap-4 h-full">
-              <MotionDiv
-                className="w-[380px] h-full bg-[#f4f4f4] rounded-xl flex flex-col justify-start  items-center py-4"
-                {...elementStyle["style3"]}
-              >
+              <MotionDiv className="w-[380px] h-full bg-[#f4f4f4] rounded-xl flex flex-col justify-start  items-center py-4" {...elementStyle["style3"]} >
                 <div className="relative w-full max-w-[350px] h-full max-h-[480px] overflow-hidden flex flex-col justify-start items-center">
                   <Image
                     className=" mt-2 drop-shadow-[-5px_0px_4px_rgba(0,0,0,0.6)] hover:drop-shadow-[0px_0px_8px_rgba(0,0,0,0.65)] 
@@ -191,86 +248,33 @@ const Home = () => {
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
             </div>
-
             <div className="flex flex-col justify-start items-center gap-4 h-full">
-              <MotionDiv
-                className="w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-end items-center py-4 px-6 text-center h-full"
-                {...elementStyle["style4"]}>
+              <MotionDiv className="w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-end items-center py-4 px-6 text-center h-full" {...elementStyle["style4"]}>
                 <span className="text-[#353535] text-[22px] font-bold">Service I Offer</span>
                 <p className="text-[#7e7e7e] text-[16px] font-bold">I could help you with a few things ...</p>
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
-              <MotionDiv
-                className="w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-center items-center p-4 gap-2"
-                {...elementStyle["style5"]}
-              >
-
-                <IconInCard className={"hover:bg-[#353535]"}><BsGithub size={30} color={"#fff"} /></IconInCard>
-                <IconInCard className={"hover:bg-[#50A0E6]"}><BsLinkedin size={30} color={"#fff"} /></IconInCard>
-                <IconInCard className={"hover:bg-[#68E651]"}><BsLine size={30} color={"#fff"} /></IconInCard>
-                <IconInCard className={"hover:bg-[#E65060]"}><BsFillSendPlusFill size={30} color={"#fff"} /></IconInCard>
+              <MotionDiv className="w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-around items-center p-4 gap-2" {...elementStyle["style5"]} >
+                {ContactList.map((e, _) => (<IconInCard key={_} className={e.style}>{e.element}</IconInCard>))}
               </MotionDiv>
             </div>
           </section>
           <section className="w-full h-[100%] max-w-[90vw] flex flex-col bg-red sm:h-[250px] justify-center items-start gap-4 relative overflow-hidden">
-
-            <TextParallax baseVelocity={-5}>Hello Everyone!</TextParallax>
-            <TextParallax baseVelocity={5}><span className="hover:drop-shadow-2xl hover:text-white">you can call me &quot;Foei&quot;</span></TextParallax>
-
+            {TextSlice.map((e, _) => (<TextParallax key={_} baseVelocity={e.vlc}>{e.text}</TextParallax>))}
           </section>
-          <section
-            className="w-full flex flex-col justify-center items-center"
-          // className="w-full sm:h-[450px] h-full  flex flex-col bg-red  justify-center items-center gap-4"
-          >
+          <section className="w-full flex flex-col justify-center items-center" >
             <span className="text-[#353535] font-bold text-[16px] uppercase my-4">POWERING THE BEST TOOLS</span>
-            <CardParallax baseVelocity={4}>
+
+            <CardParallax baseVelocity={2}>
               <motion.div className="sm:w-full flex flex-row gap-4 overflow-hidden">
-                <IconCard src="logo/nodejs.svg" w={80} h={80} t="Node.js" />
-                <IconCard src="logo/express.svg" w={80} h={80} t="Express.js" />
-                <IconCard src="logo/nestjs.svg" w={80} h={80} t="Nest.js" />
-                <IconCard src="logo/next.svg" w={80} h={80} t="Next.js" />
-                <IconCard src="logo/laravel.svg" w={80} h={80} t="Laravel" />
-                <IconCard src="logo/redis.svg" w={80} h={80} t="Redis" />
-                <IconCard src="logo/kafka.svg" w={80} h={80} t="Kafka" />
-                <IconCard src="logo/mongo.svg" w={80} h={80} t="Mongo" />
-                <IconCard src="logo/postgresql.svg" w={80} h={80} t="PostgreSQL" />
-                <IconCard src="logo/prisma.svg" w={80} h={80} t="Prisma.js" />
-                <IconCard src="logo/jestjs.svg" w={80} h={80} t="Jest" />
-                <IconCard src="logo/docker.svg" w={80} h={80} t="Docker" />
-                <IconCard src="logo/aws.svg" w={80} h={80} t="AWS" />
-                <IconCard src="logo/figma.svg" w={80} h={80} t="Figma" />
+                {ImageTools.map((e, _) => (<IconCard key={_} src={e.src} w={e.w} h={e.h} t={e.desc} />))}
               </motion.div>
             </CardParallax>
-
-
-            {/* <div className="w-full h-[320px] border-2 border-[#353535] rounded-lg" > */}
-            {/*   <div className="w-full h-full flex  justify-center items-center"> */}
-            {/*     <div className="flex flex-row justify-center items-center text-[42px] text-[#fa8411]"> */}
-            {/*       that's a nice [ */}
-            {/*       <span className={`transition-all duration-500 ease-in-out ${mouseOn ? "w-[10px]" : " w-0"}`} > */}
-            {/*         &nbsp;&nbsp;&nbsp;</span> */}
-            {/*       <div */}
-            {/*         onMouseOver={() => setMouseOn(true)} */}
-            {/*         onMouseLeave={() => setMouseOn(false)} */}
-            {/*       > */}
-            {/*         <Image */}
-            {/*           src={'/logo/nodejs.svg'} */}
-            {/*           width={80} */}
-            {/*           height={80} */}
-            {/*           alt="" */}
-            {/*           className={`transition-transform duration-[800ms] ease-in-out origin-center ${mouseOn ? "scale-x-100" : "scale-x-0"}`} */}
-            {/*         /> */}
-            {/*       </div> */}
-            {/*       <span className={`transition-all duration-500 ease-in-out ${mouseOn ? "w-[10px]" : "w-0"}`} > */}
-            {/*         &nbsp;&nbsp;&nbsp;</span> */}
-            {/*       ] chair */}
-            {/*     </div> */}
-            {/*   </div> */}
-            {/* </div> */}
           </section>
+          <ContinuousSlider />
         </main>
       </div >
-    </div>
+    </div >
   )
 }
 export default Home
