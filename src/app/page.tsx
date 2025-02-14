@@ -158,32 +158,6 @@ const CardParallax = ({ children, baseVelocity = 5 }: { children: React.ReactNod
       </motion.div> </div>);
 };
 
-// const ProjectParallax = ({ children, baseVelocity = 5, stateVal }: { children: React.ReactNode; baseVelocity?: number; stateVal: Dispatch<SetStateAction<number>> }) => {
-//   const baseX = useMotionValue(0);
-//   const directionFactor = useRef<number>(1);
-//   const duplicateCount = 5;
-//   useAnimationFrame((_, delta) => {
-//     let moveBy = directionFactor.current * baseVelocity * (delta / 5000);
-//     baseX.set(baseX.get() + moveBy);
-//   });
-//   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
-//   return (
-//     <div
-//       onMouseOver={() => stateVal(5)}
-//       onMouseLeave={() => stateVal(20)}
-//       className="overflow-hidden leading-[0.8] m-0 whitespace-nowrap flex flex-row w-[90vw] h-full"
-//     >
-//       <motion.div className="font-semibold uppercase text-[64px] flex whitespace-nowrap flex-row w-full h-full"
-//         style={{ x }} >
-//         {Array(duplicateCount).fill(children).map((child, index) => (
-//           <div className="w-full h-full" key={index}>
-//             {child}
-//           </div>
-//         ))}
-//       </motion.div> </div>);
-// };
-
-
 const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetStateAction<number>> }) => {
   const baseX = useMotionValue(0);
   const directionFactor = useRef<number>(1);
@@ -275,9 +249,12 @@ const Home = () => {
               </MotionDiv>
             </div>
           </section>
-          <section className="w-full h-[100%] max-w-[90vw] flex flex-col bg-red sm:h-[250px] justify-center items-start gap-4 relative overflow-hidden">
+          <MotionDiv
+            className="w-full h-[100%] max-w-[90vw] flex flex-col bg-red sm:h-[250px] justify-center items-start gap-4 relative overflow-hidden"
+            {...elementStyle["style2"]}
+          >
             {TextSlice.map((e, _) => (<TextParallax key={_} baseVelocity={e.vlc}>{e.text}</TextParallax>))}
-          </section>
+          </MotionDiv>
           <section className="w-full flex flex-col justify-center items-center" >
             <span className="text-[#353535] font-bold text-[16px] uppercase my-4">POWERING THE BEST TOOLS</span>
 
