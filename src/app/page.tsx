@@ -16,6 +16,7 @@ type IconCardProps = {
 type IconInCardProps = {
   children: React.ReactNode;
   className?: string | undefined;
+  rf?: string;
 }
 interface ParallaxProps {
   children: string | React.ReactNode;
@@ -26,11 +27,11 @@ const TextSlice: { vlc: number, text: string }[] = [
   { vlc: -2, text: "you can call me 'Foei' " },
 ]
 
-const ContactList: { element: React.ReactNode, style: string }[] = [
-  { element: <BsGithub size={30} color={"#fff"} />, style: "hover:bg-[#353535] w-[50px]" },
-  { element: <BsLinkedin size={30} color={"#fff"} />, style: "hover:bg-[#50A0E6] w-[50px]" },
-  { element: <BsLine size={30} color={"#fff"} />, style: "hover:bg-[#68E651] w-[50px]" },
-  { element: <BsFillSendPlusFill size={30} color={"#fff"} />, style: "hover:bg-[#E65060] w-[50px]" },
+const ContactList: { element: React.ReactNode, style: string, ref: string }[] = [
+  { element: <BsGithub size={30} color={"#fff"} />, style: "hover:bg-[#353535] w-[50px]", ref: "https://github.com/foeiieof" },
+  { element: <BsLinkedin size={30} color={"#fff"} />, style: "hover:bg-[#50A0E6] w-[50px]", ref: "https://www.linkedin.com/in/akarawat-chantarasangnawee-74134321b/" },
+  { element: <BsLine size={30} color={"#fff"} />, style: "hover:bg-[#68E651] w-[50px]", ref: "https://line.me/ti/p/utG3m8Qh7x" },
+  { element: <BsFillSendPlusFill size={30} color={"#fff"} />, style: "hover:bg-[#E65060] w-[50px]", ref: "akarawat.chant@gmail.com" },
 ]
 
 const ImageTools: { src: string, w: number, h: number, desc: string }[] = [
@@ -86,17 +87,24 @@ const MotionDiv = ({ children, className, ...props }: { children?: React.ReactNo
   return <motion.div className={className} {...props}>{children}</motion.div>
 }
 
-const IconInCard = ({ children, className }: IconInCardProps) => {
-  return <motion.div
+const IconInCard = ({ children, className, rf }: IconInCardProps) => {
+  return <motion.a
     initial={{ rotate: 0 }}
     whileHover={{ rotate: [0, 10, -10, 0], }}
     transition={{ duration: 0.5, ease: "easeInOut", repeat: Infinity }}
-    className={clsx(`w-[100px] h-[50px] rounded-lg flex justify-center items-center transition delay-icon duration-icon ease-in-out`, className)}> {children} </motion.div>
+    className={clsx(`w-[100px] h-[50px] rounded-lg flex justify-center items-center transition delay-icon duration-icon ease-in-out`, className)}
+    onClick={() => {
+      window.open(rf)
+    }}
+  >
+    {children}
+  </motion.a>
 }
 
 const IconCard = ({ src, w, h, t }: IconCardProps) => {
   return (
-    <div className="w-[140px] h-[180px] font-semibold hover:font-bold flex flex-col justify-evenly items-center 
+    <div
+      className="w-[140px] h-[180px] font-semibold hover:font-bold flex flex-col justify-evenly items-center 
       gap-2 bg-[#f4f4f4] rounded-xl py-2 grayscale hover:grayscale-0 text-[#b0b0b0] hover:text-black ">
       {src ? <motion.div whileHover={{ scale: 0.8, }} >
         <Image src={src} width={w} height={h} className="rounded-2xl bg-white p-4" alt="" />
@@ -105,13 +113,6 @@ const IconCard = ({ src, w, h, t }: IconCardProps) => {
   )
 }
 
-// const PhotoCard = ({ src, w, h, t }: IconCardProps) => {
-//   return (
-//     <div className="w-fit bg-transparent p-1 rounded-xl border border-[#353535]/5">
-//       {src ? < Image src={src} width={w} height={h} className={`object-contain bg-red-300 rounded-xl ${t}`} alt="" /> : ""}
-//     </div >
-//   )
-// }
 
 const TextParallax = ({ children, baseVelocity }: ParallaxProps) => {
   const baseX = useMotionValue(0);
@@ -245,7 +246,7 @@ const Home = () => {
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
               <MotionDiv className="w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-around items-center p-4 gap-2" {...elementStyle["style5"]} >
-                {ContactList.map((e, _) => (<IconInCard key={_} className={e.style}>{e.element}</IconInCard>))}
+                {ContactList.map((e, _) => (<IconInCard key={_} rf={e.ref} className={e.style}>{e.element}</IconInCard>))}
               </MotionDiv>
             </div>
           </section>
