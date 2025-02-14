@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { wrap } from "motion"
 import Image from "next/image"
 import { CgChevronRight } from "react-icons/cg"
-import { useEffect, useRef, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
 import { motion, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame, MotionProps, } from "motion/react"
 
@@ -72,6 +72,15 @@ const elementStyle = {
     transition: { duration: 0.4, delay: 0.3, ease: [0, 0.71, 0.2, 1.01], }
   }
 }
+
+const images: { src: string, type: "phone" | "desktop" }[] = [
+  { src: "/proj/proj_landn_exc.png", type: "desktop" },
+  { src: "/proj/proj_note_exc.png", type: "phone" },
+  { src: "/proj/proj_crm_exc.png", type: "desktop" },
+  { src: "/proj/proj_ai_exc.png", type: "phone" },
+  { src: "/proj/proj_crm2_exc.png", type: "desktop" },
+  { src: "/proj/proj_loyal_exc.png", type: "phone" },
+];
 
 const MotionDiv = ({ children, className, ...props }: { children?: React.ReactNode; className: string } & MotionProps) => {
   return <motion.div className={className} {...props}>{children}</motion.div>
@@ -173,24 +182,31 @@ const CardParallax = ({ children, baseVelocity = 5 }: { children: React.ReactNod
 //         ))}
 //       </motion.div> </div>);
 // };
-const images: { src: string, type: "phone" | "desktop" }[] = [
-  { src: "/proj/proj_landn_exc.png", type: "desktop" },
-  { src: "/proj/proj_note_exc.png", type: "phone" },
-  { src: "/proj/proj_crm_exc.png", type: "desktop" },
-  { src: "/proj/proj_ai_exc.png", type: "phone" },
-  { src: "/proj/proj_crm2_exc.png", type: "desktop" },
-  { src: "/proj/proj_loyal_exc.png", type: "phone" },
-];
 
-const ContinuousSlider = () => {
+
+const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetStateAction<number>> }) => {
+  const baseX = useMotionValue(0);
+  const directionFactor = useRef<number>(1);
+  useAnimationFrame((_, delta) => {
+    let moveBy = directionFactor.current * -drt * (delta / 1000);
+    baseX.set(baseX.get() + moveBy);
+  });
+  const x = useTransform(baseX, (v) => `${wrap(-100, 0, v)}%`);
   return (
     <div className="overflow-hidden w-full h-[600px] relative">
       <motion.div
-        className="flex w-[200%]" // ทำให้กว้างกว่าจอเพื่อเลื่อนได้ต่อเนื่อง
-        animate={{ x: ["0%", "-100%"] }} // เลื่อนจาก 0 → -100%
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }} // วนซ้ำตลอด
+        onMouseOver={() => {
+          console.log("mouse Over!")
+          setDrt(2)
+        }}
+        onMouseLeave={() => {
+          console.log("mouse leaf")
+          setDrt(4)
+        }}
+        style={{ x }}
+        className="flex w-[200%]"
       >
-        {[...images, ...images].map((img, index) => ( // ซ้ำ 2 รอบเพื่อไม่มีช่องว่าง
+        {[...images, ...images].map((img, index) => (
           <img
             key={index}
             src={img.src}
@@ -198,12 +214,12 @@ const ContinuousSlider = () => {
           />
         ))}
       </motion.div>
-    </div>
+    </div >
   );
 }
 const Home = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-
+  const [scrollProj, setScrollProj] = useState(4)
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -271,7 +287,7 @@ const Home = () => {
               </motion.div>
             </CardParallax>
           </section>
-          <ContinuousSlider />
+          <ContinuousSlider drt={scrollProj} setDrt={setScrollProj} />
         </main>
       </div >
     </div >
