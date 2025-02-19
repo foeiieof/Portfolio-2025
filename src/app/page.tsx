@@ -222,8 +222,9 @@ const Home = () => {
                   <Image src={'/temp/temp-port.png'} className="absolute transition-transform ease-linear duration-100 rotate-6 top-28 right-[40px] drop-shadow-md hover:scale-110 hover:rotate-0" width={200} height={200} alt='' />
 
                 </div>
-                <div className=" flex flex-col justify-center items-center mb-4 gap-4">
-                  <p className="w-[60%] text-center text-[#353535] text-[22px] font-bold">Free Template Design Resource</p>
+                <div className=" flex flex-col justify-center items-center mb-4 gap-2">
+                  <p className="w-[60%] text-center text-[#353535] text-[22px] font-bold leading-6">Free Template Design Resource</p>
+                  <p className="text-[#7e7e7e] text-[14px] font-bold">Available in <span className="after:contents-['·...'] after:animate-movingDots"></span> </p>
                   <span className="py-1 px-3 text-[12px] text-black/80 font-bold border border-zinc-300/60 bg-zinc-100 shadow-sm rounded-xl">Public</span>
                 </div>
               </MotionDiv>

@@ -23,6 +23,7 @@ const config: Config = {
       },
       animation: {
         'spin-swap': 'spin-swap ease-in-out 4s infinite',
+        movingDots: "movingDots 1.2s steps(1) infinite",
       },
       keyframes: {
         'spin-swap': {
@@ -35,6 +36,13 @@ const config: Config = {
           '100%': {
             transform: 'scale(1.4)',
           },
+        },
+        movingDots: {
+          "0%": { content: '"·..."' },
+          "25%": { content: '" .·.." ' },
+          "50%": { content: '" ..·. "' },
+          "75%": { content: '" ...·"' },
+          "100%": { content: '"...."' }
         },
       },
     },
