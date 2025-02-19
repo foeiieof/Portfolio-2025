@@ -13,7 +13,7 @@ const Navbar = () => {
   useEffect(() => {
     if (!path && url.length > 1) { setPath(true) }
     else { setPath(false) }
-  }, [url])
+  }, [path, url])
 
   return (
     <nav className="z-50 w-full bg-transparent h-[55px] flex flex-row justify-between items-center px-[15px] fixed">

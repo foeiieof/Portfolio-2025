@@ -4,7 +4,7 @@ const Projects = () => {
     <main className="container w-screen h-screen m-auto flex flex-col justify-center items-center">
       <div className="w-full h-10 flex flex-row justify-between items-center">
         <span className="text-[26px] font-bold">Projects</span>
-        <p className="text-[14px] font-medium text-black/30">Got an idea for a project? <span className="underline font-bold text-[16px] text-black">Let builds'it</span></p>
+        <p className="text-[14px] font-medium text-black/30">Got an idea for a project? <span className="underline font-bold text-[16px] text-black">Let builds&apos;it</span></p>
       </div>
       {/* <span>Hello project Page !</span> */}
       {/* core */}
