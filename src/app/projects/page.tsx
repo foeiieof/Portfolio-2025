@@ -27,9 +27,11 @@ const Projects = () => {
           <span className="text-black/30 text-[20px]">desc :</span>
         </div>
         <div className="w-full h-full flex justify-center items-end">
-          <div className="relative w-[280px] h-[300px] flex justify-center items-end overflow-hidden">
+          {/* setting w,h for scale cover size img */}
+          <div className="relative w-[280px] md:w-[400px] h-[300px] md:h-[360px] flex justify-center items-end overflow-hidden">
+            {/* setting w,h for size img */}
             <Image
-              className="w-full h-full max-w-[260px] max-h-[280px] transition-transform duration-[250ms] object-cover object-top drop-shadow-[-5px_0px_4px_rgba(0,0,0,0.4)] hover:scale-[1.02] hover:drop-shadow-[-1px_-1px_4px_rgba(0,0,0,0.7)]"
+              className="w-full h-full max-w-[260px] md:max-w-[360px] max-h-[280px] md:max-h-[360px] transition-transform duration-[250ms] object-cover object-top drop-shadow-[-5px_0px_4px_rgba(0,0,0,0.4)] hover:scale-[1.02] hover:drop-shadow-[-1px_-1px_4px_rgba(0,0,0,0.7)]"
               src={'/proj/proj_note.png'} width={220} height={260} alt='proj_note' />
           </div>
         </div>
