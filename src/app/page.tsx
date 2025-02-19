@@ -168,7 +168,7 @@ const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetSt
   });
   const x = useTransform(baseX, (v) => `${wrap(-100, 0, v)}%`);
   return (
-    <div className="overflow-hidden w-full h-[600px] relative">
+    <div className="overflow-hidden w-full h-full sm:h-[600px] relative">
       <motion.div
         onMouseOver={() => {
           console.log("mouse Over!")
@@ -179,13 +179,13 @@ const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetSt
           setDrt(4)
         }}
         style={{ x }}
-        className="flex w-[200%]"
+        className="flex w-[200%] h-full"
       >
         {[...images, ...images].map((img, index) => (
           <img
             key={index}
             src={img.src}
-            className={`${img.type === "phone" ? "w-[400px]" : "w-[800px]"} h-[600px] object-cover mx-2 rounded-xl border border-[#353535]/10 p-1`}
+            className={`${img.type === "phone" ? "w-[400px]" : "w-[800px]"} h-[250px] sm:h-[600px] object-cover mx-2 rounded-xl border border-[#353535]/10 p-1`}
           />
         ))}
       </motion.div>
@@ -209,14 +209,24 @@ const Home = () => {
   return (
     <div className="relative">
       <div className="fixed bottom-0 left-0 h-2 bg-[#353535] z-50" style={{ width: `${scrollProgress * 100}%` }} />
-      <div className="grid grid-rows-[20px_1fr_20px] sm:items-start justify-items-center min-h-screen p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+      <div className="grid grid-rows-[20px_1fr_20px] sm:items-start justify-items-center min-h-screen p-8 pb-2 sm:pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full sm:px-8 px-2 overflow-y-hidden">
           <section className="w-full sm:h-[600px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4 ">
             <div className="flex flex-col justify-start items-center gap-4 h-full">
               <MotionDiv
-                className="w-[380px] h-[490px] bg-[#f4f4f4] rounded-xl"
+                className="w-[380px] h-[490px] bg-[#f4f4f4] rounded-xl flex flex-col justify-around items-center"
                 {...elementStyle["style2"]}
-              ></MotionDiv>
+              >
+                <div className="relative w-full h-full flex flex-row justify-center items-center group">
+                  <Image src={'/temp/temp-web.svg'} className="absolute transition-transform ease-linear duration-100 -rotate-2 top-12 left-[40px] drop-shadow-md hover:scale-105 hover:rotate-0 hover:z-30" width={230} height={230} alt='' />
+                  <Image src={'/temp/temp-port.svg'} className="absolute transition-transform ease-linear duration-100 rotate-6 top-28 right-[40px] drop-shadow-md hover:scale-110 hover:rotate-0" width={200} height={200} alt='' />
+
+                </div>
+                <div className=" flex flex-col justify-center items-center mb-4 gap-4">
+                  <p className="w-[60%] text-center text-[#353535] text-[22px] font-bold">Free Template Design Resource</p>
+                  <span className="py-1 px-3 text-[12px] text-black/80 font-bold border border-zinc-300/60 bg-zinc-100 shadow-sm rounded-xl">Public</span>
+                </div>
+              </MotionDiv>
               <MotionDiv className="w-[380px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4" {...elementStyle["style1"]}>
                 <span className="text-[#353535] text-[22px] font-bold">About me</span>
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
@@ -239,11 +249,19 @@ const Home = () => {
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
             </div>
+
             <div className="flex flex-col justify-start items-center gap-4 h-full">
-              <MotionDiv className="w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-end items-center py-4 px-6 text-center h-full" {...elementStyle["style4"]}>
-                <span className="text-[#353535] text-[22px] font-bold">Service I Offer</span>
-                <p className="text-[#7e7e7e] text-[16px] font-bold">I could help you with a few things ...</p>
-                <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
+              <MotionDiv className="w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4 px-6 text-center h-full" {...elementStyle["style4"]}>
+                <div className="relative w-full h-full flex justify-center items-center group">
+                  <Image src={"/char/cat_inbox.png"} alt="inbox" width={240} height={240} className="transition-transform ease-in duration-200 group-hover:scale-105 " />
+                  <Image src={"/char/star.png"} alt="inbox" width={25} height={25} className="absolute top-10 sm:top-28 right-24 animate-spin-swap" />
+                  <Image src={"/char/chat.png"} alt="inbox" width={40} height={40} className="absolute top-3 sm:top-20 right-36 opacity-0 transition-opacity duration-[1s] ease-in-out group-hover:opacity-100" />
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-[#353535] text-[22px] font-bold">Service I Offer</span>
+                  <p className="text-[#7e7e7e] text-[16px] font-bold">I could help you with a few things ...</p>
+                  <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
+                </div>
               </MotionDiv>
               <MotionDiv className="w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-around items-center p-4 gap-2" {...elementStyle["style5"]} >
                 {ContactList.map((e, _) => (<IconInCard key={_} rf={e.ref} className={e.style}>{e.element}</IconInCard>))}

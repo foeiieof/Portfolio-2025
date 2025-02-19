@@ -20,7 +20,23 @@ const config: Config = {
       },
       transitionDuration: {
         icon: "200ms"
-      }
+      },
+      animation: {
+        'spin-swap': 'spin-swap ease-in-out 4s infinite',
+      },
+      keyframes: {
+        'spin-swap': {
+          '0%': {
+            transform: 'scale(1.4)',
+          },
+          '50%': {
+            transform: 'scale(1)',
+          },
+          '100%': {
+            transform: 'scale(1.4)',
+          },
+        },
+      },
     },
   },
   plugins: [],
