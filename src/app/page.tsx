@@ -218,8 +218,8 @@ const Home = () => {
                 {...elementStyle["style2"]}
               >
                 <div className="relative w-full h-full flex flex-row justify-center items-center group">
-                  <Image src={'/temp/temp-web.svg'} className="absolute transition-transform ease-linear duration-100 -rotate-2 top-12 left-[40px] drop-shadow-md hover:scale-105 hover:rotate-0 hover:z-30" width={230} height={230} alt='' />
-                  <Image src={'/temp/temp-port.svg'} className="absolute transition-transform ease-linear duration-100 rotate-6 top-28 right-[40px] drop-shadow-md hover:scale-110 hover:rotate-0" width={200} height={200} alt='' />
+                  <Image src={'/temp/temp-web.png'} className="absolute transition-transform ease-linear duration-100 -rotate-2 top-12 left-[40px] drop-shadow-md hover:scale-105 hover:rotate-0 hover:z-30" width={230} height={230} alt='' />
+                  <Image src={'/temp/temp-port.png'} className="absolute transition-transform ease-linear duration-100 rotate-6 top-28 right-[40px] drop-shadow-md hover:scale-110 hover:rotate-0" width={200} height={200} alt='' />
 
                 </div>
                 <div className=" flex flex-col justify-center items-center mb-4 gap-4">
