@@ -6,6 +6,7 @@ import { CgChevronRight } from "react-icons/cg"
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 import { BsGithub, BsLinkedin, BsLine, BsFillSendPlusFill } from "react-icons/bs"
 import { motion, useScroll, useMotionValue, useVelocity, useSpring, useTransform, useAnimationFrame, MotionProps, } from "motion/react"
+import { useRouter } from "next/navigation"
 
 type IconCardProps = {
   w: number;
@@ -193,6 +194,7 @@ const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetSt
   );
 }
 const Home = () => {
+  const router = useRouter()
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollProj, setScrollProj] = useState(4)
   useEffect(() => {
@@ -245,9 +247,11 @@ const Home = () => {
                     alt="" />
                 </div>
                 <div className="relative z-20 w-full inset-x-0 -top-10 h-[15%] bg-gradient-to-t from-[#f4f4f4] via-[#f4f4f4] to-transparent blur-sm"></div>
-                <span className="text-[#353535] text-[22px] font-bold z-20">Projects</span>
+                <span className="text-[#353535] text-[22px] font-bold z-20" >Projects</span>
                 <span className="text-[#7e7e7e] text-[14px] font-bold z-20">IOS, WebSite, more...</span>
-                <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
+                <div
+                  onClick={() => { router.push('/projects') }}
+                  className="cursor-pointer w-[48px] h-[30px]  flex justify-center items-center bg-white rounded-2xl mt-2 hover:-rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
             </div>
 
