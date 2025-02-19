@@ -210,11 +210,11 @@ const Home = () => {
     <div className="relative">
       <div className="fixed bottom-0 left-0 h-2 bg-[#353535] z-50" style={{ width: `${scrollProgress * 100}%` }} />
       <div className="grid grid-rows-[20px_1fr_20px] sm:items-start justify-items-center min-h-screen p-8 pb-2 sm:pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full sm:px-8 px-2 overflow-y-hidden">
-          <section className="w-full sm:h-[600px] h-full  flex sm:flex-row flex-col bg-red  justify-center sm:items-start items-center gap-4 ">
+        <main className=" flex flex-col gap-8 row-start-2 items-center md:items-start w-full h-full sm:px-8 px-2 sm:py-0 py-2 overflow-x-hidden">
+          <section className="w-full lg:h-[600px] h-full  flex lg:flex-row flex-col bg-red  justify-start lg:justify-center lg:items-start items-center gap-4 ">
             <div className="flex flex-col justify-start items-center gap-4 h-full">
               <MotionDiv
-                className="w-[380px] h-[490px] bg-[#f4f4f4] rounded-xl flex flex-col justify-around items-center"
+                className="sm:w-[380px] h-[490px] bg-[#f4f4f4] rounded-xl flex flex-col justify-around items-center"
                 {...elementStyle["style2"]}
               >
                 <div className="relative w-full h-full flex flex-row justify-center items-center group">
@@ -228,13 +228,13 @@ const Home = () => {
                   <span className="py-1 px-3 text-[12px] text-black/80 font-bold border border-zinc-300/60 bg-zinc-100 shadow-sm rounded-xl">Public</span>
                 </div>
               </MotionDiv>
-              <MotionDiv className="w-[380px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4" {...elementStyle["style1"]}>
+              <MotionDiv className="w-full sm:w-[380px] h-[100px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4" {...elementStyle["style1"]}>
                 <span className="text-[#353535] text-[22px] font-bold">About me</span>
                 <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
               </MotionDiv>
             </div>
             <div className="flex flex-col justify-start items-center gap-4 h-full">
-              <MotionDiv className="w-[380px] h-full bg-[#f4f4f4] rounded-xl flex flex-col justify-start  items-center py-4" {...elementStyle["style3"]} >
+              <MotionDiv className=" sm:w-[380px]  h-full bg-[#f4f4f4] rounded-xl flex flex-col justify-start  items-center py-4" {...elementStyle["style3"]} >
                 <div className="relative w-full max-w-[350px] h-full max-h-[480px] overflow-hidden flex flex-col justify-start items-center">
                   <Image
                     className=" mt-2 drop-shadow-[-5px_0px_4px_rgba(0,0,0,0.6)] hover:drop-shadow-[0px_0px_8px_rgba(0,0,0,0.65)] 
@@ -252,7 +252,7 @@ const Home = () => {
             </div>
 
             <div className="flex flex-col justify-start items-center gap-4 h-full">
-              <MotionDiv className="w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4 px-6 text-center h-full" {...elementStyle["style4"]}>
+              <MotionDiv className="sm:w-[380px] bg-[#f4f4f4] rounded-xl flex flex-col justify-between items-center py-4 px-6 text-center h-full" {...elementStyle["style4"]}>
                 <div className="relative w-full h-full flex justify-center items-center group">
                   <Image src={"/char/cat_inbox.png"} alt="inbox" width={240} height={240} className="transition-transform ease-in duration-200 group-hover:scale-105 " />
                   <Image src={"/char/star.png"} alt="inbox" width={25} height={25} className="absolute top-10 sm:top-28 right-24 animate-spin-swap" />
@@ -264,7 +264,7 @@ const Home = () => {
                   <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
                 </div>
               </MotionDiv>
-              <MotionDiv className="w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-around items-center p-4 gap-2" {...elementStyle["style5"]} >
+              <MotionDiv className="w-full sm:w-[380px] h-[70px] bg-[#f4f4f4] rounded-xl flex flex-row justify-around items-center p-4 gap-2" {...elementStyle["style5"]} >
                 {ContactList.map((e, _) => (<IconInCard key={_} rf={e.ref} className={e.style}>{e.element}</IconInCard>))}
               </MotionDiv>
             </div>
