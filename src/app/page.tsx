@@ -96,8 +96,7 @@ const IconInCard = ({ children, className, rf }: IconInCardProps) => {
     className={clsx(`w-[100px] h-[50px] rounded-lg flex justify-center items-center transition delay-icon duration-icon ease-in-out`, className)}
     onClick={() => {
       window.open(rf)
-    }}
-  >
+    }} >
     {children}
   </motion.a>
 }
@@ -241,7 +240,7 @@ const Home = () => {
                   <Image
                     className=" mt-2 drop-shadow-[-5px_0px_4px_rgba(0,0,0,0.6)] hover:drop-shadow-[0px_0px_8px_rgba(0,0,0,0.65)] 
                     object-cover object-top scale-[0.93] hover:scale-[1.01] transition-all ease-in-out duration-[260ms]"
-                    src={'/proj/proj_note.png'}
+                    src={'/proj/proj_note_comp/proj_note.png'}
                     width={340}
                     height={300}
                     alt="" />
