@@ -5,9 +5,9 @@ import { ProjectCard, ProjectCardProps } from "../components/projects/ProjectCar
 
 const projectcards: ProjectCardProps[] = [
   // { header: "Notos", desc: "take your second brain!", mainimg: "/proj/proj_note.png", leftimg: "/proj/proj_note_comp/comp_1.png", rightimg: "/proj/proj_note_comp/comp_2.png", phone: true, desktop: false },
-  { header: "Dat Dot", desc: "Progress of this years", mainimg: "/proj/proj_datdot_comp/proj_datdot.png", leftimg: "/proj/proj_datdot_comp/comp_1.png", rightimg: "/proj/proj_datdot_comp/comp_2.png", phone: true, desktop: true },
-  { header: "PokemonWiK", desc: "Detail of Pokemons", mainimg: "/proj/proj_pokewik_comp/proj_pokewik.png", leftimg: "/proj/proj_pokewik_comp/comp_1.png", rightimg: "/proj/proj_pokewik_comp/comp_2.png", phone: true, desktop: true },
-  { header: "WMember (Line)", desc: "Loyal Customer Support", mainimg: "/proj/proj_loyal.png", leftimg: "/proj/proj_loyal_comp/comp_1.png", rightimg: "/proj/proj_loyal_comp/comp_2.png", phone: true, desktop: false },
+  { header: "Dat Dot", desc: "Progress of this years", href: "https://day-dot-next.vercel.app", mainimg: "/proj/proj_datdot_comp/proj_datdot.png", leftimg: "/proj/proj_datdot_comp/comp_1.png", rightimg: "/proj/proj_datdot_comp/comp_2.png", phone: true, desktop: true },
+  { header: "PokemonWiK", desc: "Detail of Pokemons", href: "https://pokemon-next-nu-two.vercel.app", mainimg: "/proj/proj_pokewik_comp/proj_pokewik.png", leftimg: "/proj/proj_pokewik_comp/comp_1.png", rightimg: "/proj/proj_pokewik_comp/comp_2.png", phone: true, desktop: true },
+  { header: "WMember (Line)", desc: "Loyal Customer Support", href: "", mainimg: "/proj/proj_loyal.png", leftimg: "/proj/proj_loyal_comp/comp_1.png", rightimg: "/proj/proj_loyal_comp/comp_2.png", phone: true, desktop: false },
 ]
 
 const Projects = () => {
@@ -64,6 +64,7 @@ const Projects = () => {
               key={index}
               header={card.header}
               desc={card.desc}
+              href={card.href}
               mainimg={card.mainimg}
               leftimg={card.leftimg}
               rightimg={card.rightimg}

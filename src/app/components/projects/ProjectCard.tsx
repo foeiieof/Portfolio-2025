@@ -2,10 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import { CiDesktop, CiMobile2 } from 'react-icons/ci'
 import { CgChevronRight } from 'react-icons/cg'
+import Link from 'next/link';
 
 export interface ProjectCardProps {
   header: string;
   desc: string;
+  href: string;
   mainimg: string;
   leftimg: string;
   rightimg: string;
@@ -13,7 +15,7 @@ export interface ProjectCardProps {
   desktop: boolean;
 }
 
-export const ProjectCard = ({ header, desc, mainimg, leftimg, rightimg, phone, desktop }: ProjectCardProps) => {
+export const ProjectCard = ({ header, desc, href, mainimg, leftimg, rightimg, phone, desktop }: ProjectCardProps) => {
   return (
     <div className="flex flex-col justify-start items-center w-full h-[440px] md:h-[600px] bg-[#f4f4f4] p-4 rounded-xl">
       <div className="w-full h-fit flex items-center flex-row gap-2">
@@ -30,7 +32,7 @@ export const ProjectCard = ({ header, desc, mainimg, leftimg, rightimg, phone, d
         <span className="text-black/80 text-[24px]">{header}</span>
         <span className="text-black/30 text-[20px]">{desc}</span>
         <div className=""></div>
-        <div className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon"><CgChevronRight size={24} color={"#7e7e7e"} /></div>
+        <Link href={href} passHref legacyBehavior><a className="w-[48px] h-[30px] flex justify-center items-center bg-white rounded-2xl mt-2 hover:rotate-6 hover:shadow-card transition delay-icon duration-icon " target='_blank'><CgChevronRight size={24} color={"#7e7e7e"} /></a></Link>
       </div>
       <div className="w-full h-full flex justify-center items-end">
         {/* setting w,h for scale cover size img */}
