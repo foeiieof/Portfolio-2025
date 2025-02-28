@@ -5,6 +5,7 @@ const projectcards: ProjectCardProps[] = [
   { header: "DayDot", desc: "Progress of this years", href: "https://day-dot-next.vercel.app", mainimg: "/proj/proj_datdot_comp/proj_datdot.png", leftimg: "/proj/proj_datdot_comp/comp_1.png", rightimg: "/proj/proj_datdot_comp/comp_2.png", phone: true, desktop: true },
   { header: "PokemonWiK", desc: "Detail of Pokemons", href: "https://pokemon-next-nu-two.vercel.app", mainimg: "/proj/proj_pokewik_comp/proj_pokewik.png", leftimg: "/proj/proj_pokewik_comp/comp_1.png", rightimg: "/proj/proj_pokewik_comp/comp_2.png", phone: true, desktop: true },
   { header: "EAuth2.0", desc: "Authentication with NextAuth2.0", href: "https://o-auth2-0-0-next14.vercel.app", mainimg: "/proj/proj_oauth_comp/proj_oauth.png", leftimg: "/proj/proj_oauth_comp/comp_1.png", rightimg: "/proj/proj_oauth_comp/comp_2.png", phone: true, desktop: false },
+  { header: "Fixit", desc: "Health Care for your Car", href: "", mainimg: "/proj/proj_fixit_comp/proj_fixit.png", leftimg: "/proj/proj_fixit_comp/comp_1.png", rightimg: "/proj/proj_fixit_comp/comp_2.png", phone: true, desktop: false },
   { header: "WMember (Line)", desc: "Loyal Customer Support", href: "", mainimg: "/proj/proj_loyal_comp/proj_loyal.png", leftimg: "/proj/proj_loyal_comp/comp_1.png", rightimg: "/proj/proj_loyal_comp/comp_2.png", phone: true, desktop: false },
 ]
 

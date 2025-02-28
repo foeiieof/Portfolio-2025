@@ -156,6 +156,8 @@ const ContinuousSlider = ({ drt, setDrt }: { drt: number, setDrt: Dispatch<SetSt
       >
         {[...images, ...images].map((img, index) => (
           <Image
+            width={100}
+            height={100}
             alt=""
             key={index}
             src={img.src}
