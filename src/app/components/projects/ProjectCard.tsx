@@ -1,14 +1,20 @@
+"use client"
 import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image'
 import { CgChevronRight } from 'react-icons/cg'
 import { CiDesktop, CiMobile2 } from 'react-icons/ci'
+import { elementStyle, MotionDiv } from '../Motiondiv';
 
 export interface ProjectCardProps { header: string; desc: string; href: string; phone: boolean; desktop: boolean; mainimg: string; leftimg: string; rightimg: string; upimg?: string; }
 
+// const styles: any = ["style1", "style2", "style3", "style4", "style5"];
+// const randomStyle: any = styles[Math.floor(Math.random() * styles.length)];
+
 export const ProjectCard = ({ header, desc, href, mainimg, leftimg, rightimg, upimg, phone, desktop }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col justify-start items-center w-full h-[440px] md:h-[600px] bg-[#f4f4f4] p-4 rounded-xl">
+    <MotionDiv className="flex flex-col justify-start items-center w-full h-[440px] md:h-[600px] bg-[#f4f4f4] p-4 rounded-xl"
+      {...elementStyle["style1"]} >
       <div className="w-full h-fit flex items-center flex-row gap-2">
         {phone && <div className="w-8 h-8 flex justify-center items-center bg-white/30 shadow-md rounded-full" > <CiMobile2 size={20} className="text-black/30" /> </div>}
         {desktop && <div className="w-8 h-8 flex justify-center items-center bg-white/30 shadow-md rounded-full" > <CiDesktop size={20} className="text-black/30" /> </div>}
@@ -31,6 +37,6 @@ export const ProjectCard = ({ header, desc, href, mainimg, leftimg, rightimg, up
             className="blur-[1px] group-hover:blur-0 group-hover:scale-150 md:group-hover:-rotate-[0deg]  absolute w-[100px] md:w-[220px] md:h-[160px] top-8 md:-top-6 right-8 md:right-20 -rotate-[18deg] transition-transform duration-[250ms]" />}
         </div>
       </div>
-    </div>
+    </MotionDiv>
   )
 }
